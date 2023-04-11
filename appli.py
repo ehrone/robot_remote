@@ -2,6 +2,7 @@ from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
+from kivy.lang import Builder 
 
 import bluetooth_communication as bc
 
@@ -23,23 +24,15 @@ class Commande(BoxLayout):
 
     def build (self):
         self.orientation="vertical"
-        self.texte = self.crea_Label(" Télécommande ")
-        self.up = self.crea_button("up",1)
-        self.up = self.crea_button("down",1)
-        self.up = self.crea_button("right",1)
-        self.up = self.crea_button("left",1)
-
-
-    
 
 class telecommandeApp(App):
     
     def build(self):
-        layout=Commande()
-        layout.build()
-        return layout
+        cmd =Commande()
+        cmd.build()
+        return cmd
 
 
 if __name__ == '__main__':
-     
+    Builder.load_file('appli.kv')
     telecommandeApp().run()
